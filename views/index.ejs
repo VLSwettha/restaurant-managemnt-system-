@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eat O’Café</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/menu.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+  <script>
+    AOS.init();
+  </script>
+
+</head>
+
+<body>
+
+
+  <!-- <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <img src="/img/logo.svg" height= "50px" alt="Foody" class="logo">
+        
+            
+                <ul class="nav-items" >
+                    <li>Home</li>
+                    <li>Menu</li>
+                    <li>About Us</li>
+                    <li>Contact</li>
+                </ul>
+            
+
+        <span style="display: flex; align-items: center;">
+            <i class="fa fa-shopping-bag" aria-hidden="true" ></i>
+        <button>SignIn</button>
+    </div> -->
+
+
+  <img class="bg-image d-none d-sm-flex" src="img/bg.webp" alt="">
+
+
+  <nav class="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button class="navbar-toggler" data-toggle="open-navbar1">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="#">
+          <img src="img/logo.png" alt="" class="img-fluid" width="170em">
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="open-navbar1">
+        <ul class="navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li class="cart-button"><a href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+             
+          <% if (user) { %>
+            <li class= ""><a class="text-black"><%= user.displayName %></a></li>
+            <li class="sign-in-button"><a href="/logout" class="text-white">Sign out</a></li>
+            <%} else { %>
+              <li class="sign-in-button "><a href="/auth/google" class="text-white">Sign In</a></li>
+          <% } %>
+                    
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- <div class="container">
+    <div class="row gx-5">
+      <div class="col-md-6  col-12  quote-left">
+        <div class="row">
+          <h1 class="quote text-center text-sm-start">Its not just food, Its an Experience.</h1>
+          <div class="row hero-buttons py-5 d-flex  align-items-center justify-content-center">
+            <span class="col  primary-btn text-white text-center  my-lg-0 mx-sm-3">View
+              Menu</span>
+            <span class=" col  secondary-btn text-center">Book a
+              Table</span>
+          </div>
+
+          <div class="reviews text-md-start text-center"
+            style="display: flexbox; align-items: flex-start; justify-content: flex-start;">
+            <div style="font-size: 1rem; padding-bottom: 15px;">Reviews</div>
+            <span>
+              <img src="img/profile1.jpg" alt="Avatar" class="avatar">
+              <img src="img/profile2.webp" alt="Avatar" class="avatar">
+              <img src="img/profile 3.jpg" alt="Avatar" class="avatar">
+              <img src="img/profile4.jpg" alt="Avatar" class="avatar">
+              <img src="img/profile5.jpg" alt="Avatar" class="avatar">
+            </span>
+            <div style="padding-top: 13px;">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-12 ">
+        <img class="img-fluid w-auto " src="img/pngegg (1).png" alt="">
+      </div>
+
+    </div>
+  </div> -->
+
+
+  <div class="container">
+    <div class="row mt-5 gx-md-5 d-flex  align-items-center justify-content-center">
+      <div class="col-12 col-md-6 ">
+        <h1 class="quote text-center text-sm-start " data-aos="fade-up" data-aos-anchor-placement="bottom-center">Its
+          not just food, Its an Experience.</h1>
+
+        <br>
+        <div class=" hero-buttons my-sm-4 d-flex align-items-center justify-content-center row-cols-sm-2 ">
+          <span class=" col primary-btn text-white text-center my-lg-0 mx-sm-3">View
+            Menu</span>
+          <a href="/tables" ><span class="col secondary-btn text-center">Book a
+            Table</span></a>
+        </div>
+
+
+        <div class="reviews text-md-start text-center my-sm-5 my-4"
+          style="display: flexbox; align-items: flex-start; justify-content: flex-start;">
+          <div style="font-size: 1rem; padding-bottom: 15px;">Reviews</div>
+          <span>
+            <img src="img/profile1.jpg" alt="Avatar" class="avatar">
+            <img src="img/profile2.webp" alt="Avatar" class="avatar">
+            <img src="img/profile 3.jpg" alt="Avatar" class="avatar">
+            <img src="img/profile4.jpg" alt="Avatar" class="avatar">
+            <img src="img/profile5.jpg" alt="Avatar" class="avatar">
+          </span>
+          <div style="padding-top: 13px;">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+
+
+        <img style="animation: rotation 10s infinite linear"
+          class="food-img  img-fluid w-75 d-flex align-items-center justify-content-center" src="img/food_edited.png"
+          alt="">
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="card1 col-lg-4">
+      <img src="img/pngegg (2).png" alt="" class="card-img">
+      <div class="card-details card-block">
+        <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
+        <p class="text-center" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+          consectetur
+          adipisicing
+          elit. Ut,
+          dicta.</p>
+      </div>
+    </div>
+
+    <div class="card1 col-lg-4">
+      <img src="img/pngegg (2).png" alt="" class="card-img">
+      <div class="card-details card-block">
+        <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
+        <p class="text-center" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+          consectetur
+          adipisicing
+          elit. Ut,
+          dicta.</p>
+      </div>
+    </div>
+
+    <div class="card1 col-lg-4">
+      <img src="img/pngegg (2).png" alt="" class="card-img">
+      <div class="card-details card-block">
+        <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
+        <p class="text-center" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+          consectetur
+          adipisicing
+          elit. Ut,
+          dicta.</p>
+      </div>
+    </div>
+
+    <div class="card1 col-lg-4 ">
+      <img src="img/pngegg (2).png" alt="" class="card-img">
+      <div class="card-details card-block">
+        <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
+        <p class="text-center" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+          consectetur
+          adipisicing
+          elit. Ut,
+          dicta.</p>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 400,
+      duration: 1400
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

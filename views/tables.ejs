@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .table{
+            width: 100px;
+            height: 50px;
+            background: #e3c0c0;
+            text-align: center;
+            padding-top: 23px; cursor: pointer; margin: 12px;
+        }
+        .selected{
+            background-color: rgb(0, 170, 0);
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <section id="table-booking">
+        <div class="table" name="1">table 1</div>
+        <div class="table"name="2">table 2</div>
+        <div class="table" name="3">table 3</div>
+        <div class="table"name="4">table 4</div>
+        <label for="appt">From </label>
+        <input type="time" name="timeFrom" class="timeF">
+        <label for="appt">To </label>
+        <input type="time" name="timeTo" class="timeT">
+        
+        <br>
+        <button style="margin: 12px;"class="book_table">BOOK TABLE</button>
+    </section>
+
+    <script>
+        $(document).ready(function(){
+            $(".table").click(function(){
+                $(this).toggleClass("selected");
+            });
+            var table = []
+            $('.table').on('click', function(){
+                var value = $(this).attr('name');
+
+                
+                function remove(table, value) {
+                    var i = table.indexOf(value)
+                    if(i > -1){                            
+                        table.splice(i, 1);
+                    }                           
+                }
+
+                if(!table.includes(value)){
+                    table.push(value);
+                }
+                else{
+                    remove(table, value);                    
+                }
+                
+                
+                
+            });
+            
+            $(".book_table").click(function(){
+                
+                var timeF = $(".timeF").val()
+                var timeT =$(".timeT").val()
+
+                details = {} //object
+
+                details["timeFrom"] = timeF
+                details["timeTo"] = timeT
+
+                for (let i = 0; i < table.length; i++) {
+                    details["table "+i] = table[i];
+                }
+
+
+                $.ajax({
+                    url: "http://localhost:4000/book-table",
+                    type: "POST",
+
+                    data: details,
+
+                    dataType: 'json',
+
+                    success: function(result) {
+                        if(result === "no_errors") location.href = "http://localhost:4000/"
+                    }
+
+                })
+
+            })
+        
+        }); 
+
+        
+    </script>
+
+
+</body>
+</html>
