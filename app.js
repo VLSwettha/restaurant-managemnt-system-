@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
-const mongodb =require('./mongo');
+const con = require('./db');
+
 
 
 
@@ -115,14 +116,8 @@ app.get('/auth/google/callback',
     for (let i = 2; i < allDataAsArray.length; i++) {
         tables.push(allDataAsArray[i])
     }
-
-    // console.log(tables); 
-    // console.log(timeFrom); 
-    // console.log(timeTo); 
-    // console.log(req.session.userName); 
+ 
     data={"tables":tables, "TimeFrom": timeFrom, "timeTo": timeTo, "userName": req.session.userName}
-    
-    await mongodb.saveTableBookingData(data);
     
 
     res.json("no_errors")
