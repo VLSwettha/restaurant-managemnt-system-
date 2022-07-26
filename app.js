@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
-const con = require('./db');
+const db = require('./db');
 
 
 
@@ -118,7 +118,13 @@ app.get('/auth/google/callback',
     }
  
     data={"tables":tables, "TimeFrom": timeFrom, "timeTo": timeTo, "userName": req.session.userName}
-    
+    let username = req.session.userName;
+    let tablesJson = JSON.stringify(tables)
+    var sql = "INSERT INTO tableBooking (timeFrom, timeTo, tables, userName) VALUES ('"+timeFrom+"', '"+timeTo+"', '"+tablesJson+"', '"+username+"')";
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted", result);
+  });
 
     res.json("no_errors")
 
