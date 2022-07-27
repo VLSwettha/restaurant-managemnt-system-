@@ -28,42 +28,33 @@
         <div class="food"name="4">food 4</div>
                 
         <br>
-        <button style="margin: 12px;"class="book_table">ORDER</button>
+        <button style="margin: 12px;"class="order">ORDER</button>
     </section>
 
     <script>
         $(document).ready(function(){
-            $(".food").click(function(){
-                $(this).toggleClass("selected");
-            });
+
+            $(".order").click(function(){
+                var details = {'foods':'{"grape": "2", "pudding": "4"}', 'totalCost':'150'} 
+                $.ajax({
+                url: "http://localhost:8000/foodorders",
+                type: "POST",
+
+                data: details,
+
+                dataType: 'json',
+
+                success: function(result) {
+                    if(result === "no_errors") location.href = "http://localhost:8000/successful"
+                    // console.log(result);
+                }
+
+            })
+
+
+            })
         });
-        var foodOrder = []
-
-        $('.food').on('click', function(){
-                var value = $(this).attr('name');
-
-                
-                function remove(foodOrder, value) {
-                    var i = foodOrder.indexOf(value)
-                    if(i > -1){                            
-                        foodOrder.splice(i, 1);
-                    }                           
-                }
-
-                if(!foodOrder.includes(value)){
-                    foodOrder.push(value);
-                }
-                else{
-                    remove(foodOrder, value);                    
-                }
-
-                console.log(foodOrder);
-                
-                
-        });
-
         
-
 
     </script>
     

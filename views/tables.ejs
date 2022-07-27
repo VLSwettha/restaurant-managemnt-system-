@@ -59,8 +59,7 @@
                 else{
                     remove(table, value);                    
                 }
-
-                console.log(table);               
+                
                 
                 
             });
@@ -81,7 +80,7 @@
 
 
                 $.ajax({
-                    url: "http://localhost:4000/book-table",
+                    url: "http://localhost:8000/book-table",
                     type: "POST",
 
                     data: details,
@@ -89,7 +88,7 @@
                     dataType: 'json',
 
                     success: function(result) {
-                        if(result === "no_errors") location.href = "http://localhost:4000/orders"
+                        if(result === "no_errors") location.href = "http://localhost:8000/orders"
                         // console.log(result);
                     }
 

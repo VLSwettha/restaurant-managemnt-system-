@@ -73,7 +73,7 @@ const GOOGLE_CLIENT_SECRET = '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';
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:4000/auth/google/callback"
+    callbackURL: "http://localhost:8000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
       userProfile=profile;
@@ -143,6 +143,31 @@ app.get('/auth/google/callback',
     res.render('orders')
   })
 
+  app.post('/foodorders', function(req, res){
+      // console.log(foodJSON);
+    // console.log(totalCost);
+
+    var username = req.session.userName;
+
+
+    var food = req.body.foods;    
+    var totalCost = req.body.totalCost;
+    var foodJSON = JSON.stringify(food)
+
+    var sql = "INSERT INTO foodOrders (username,  food, totalCost) VALUES ('"+username+"', '"+food+"', '"+totalCost+"')";
+    
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("food orders inserted");
+      res.json("no_errors");
+  });
+
+  })
+
+  app.get('/successful', function(req, res){
+    res.render('successful');
+  })
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -160,6 +185,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(4000, ()=>{console.log("server running")});
+app.listen(8000, ()=>{console.log("server running")});
 
 module.exports = app;
