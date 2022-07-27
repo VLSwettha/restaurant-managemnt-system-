@@ -368,4 +368,8 @@ food-img{
   margin-top: -100px;
 }
 
+.row{
+  --bs-gutter-x: 0;
+}
+
 

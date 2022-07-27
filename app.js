@@ -144,24 +144,19 @@ app.get('/auth/google/callback',
   })
 
   app.post('/foodorders', function(req, res){
-      // console.log(foodJSON);
-    // console.log(totalCost);
 
     var username = req.session.userName;
+    var data = req.body;
+    console.log("!!!!!!!!!!!!!!!",data);
 
-
-    var food = req.body.foods;    
-    var totalCost = req.body.totalCost;
-    var foodJSON = JSON.stringify(food)
-
-    var sql = "INSERT INTO foodOrders (username,  food, totalCost) VALUES ('"+username+"', '"+food+"', '"+totalCost+"')";
+  //   var sql = "INSERT INTO foodOrders (username,  food, totalCost) VALUES ('"+username+"', '"+foodJSON+"', '"+totalCost+"')";
     
-    db.con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("food orders inserted");
-      res.json("no_errors");
-  });
-
+  //   db.con.query(sql, function (err, result) {
+  //     if (err) throw err;
+  //     console.log("food orders inserted");
+  //     res.json("no_errors");
+  // });
+    res.json("no_errors");
   })
 
   app.get('/successful', function(req, res){

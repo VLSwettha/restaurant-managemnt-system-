@@ -1,41 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <style>
-        .food{
-            width: 100px;
-            height: 50px;
-            background: #e3c0c0;
-            text-align: center;
-            padding-top: 23px; cursor: pointer; margin: 12px;
-        }
-        .selected{
-            background-color: rgb(0, 170, 0);
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eat O’Café</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/view_menu.css">
+  
+    <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+  
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+ 
+  
 </head>
 <body>
-    <section id="table-booking">
-        <div class="food" name="1">food 1</div>
-        <div class="food"name="2">food 2</div>
-        <div class="food" name="3">food 3</div>
-        <div class="food"name="4">food 4</div>
-                
-        <br>
-        <button style="margin: 12px;"class="order">ORDER</button>
-    </section>
+    <nav class="navbar">
+        <div class="container">
+    
+          <div class="navbar-header">
+            <button class="navbar-toggler" data-toggle="open-navbar1">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <a href="#">
+              <img src="img/logo.png" alt="" class="img-fluid" width="170em">
+            </a>
+          </div>
+    
+          <div class="navbar-menu" id="open-navbar1">
+            <ul class="navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+    
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li class="cart-button"><a href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+              <li class="sign-in-button "><a href="#" class="text-white">Sign In</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <div class="row d-flex justify-content-center">
+    
+    
+              <div class=" col-lg-3 menu-card text-center " >
+    
+                <img class="card-img" src="img/pngegg.png" alt="">
+          
+                <div class="card-details card-block">
+                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Burger</h6>
+                  <p class="text-center py-1 " style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+                    consectetur
+                    adipisicing
+                    elit. Ut,
+                    dicta.</p>
+          
+                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">500   </p>
+          
+                    
+    
+    
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
+                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
+    
+                   
+    
+                </div>
+              </div>
+    
+              <div class=" col-lg-3 menu-card text-center " >
+    
+                <img class="card-img" src="img/pngegg.png" alt="">
+          
+                <div class="card-details card-block">
+                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Noodles</h6>
+                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+                    consectetur
+                    adipisicing
+                    elit. Ut,
+                    dicta.</p>
+          
+                    <p value="300" class="price text-center pb-2 " style="font-weight: 700; ">500 </p>
+          
+                    
+    
+    
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
+                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
+    
+                   
+    
+                </div>
+              </div>
+    
+    
+              <div class=" col-lg-3 menu-card text-center " >
+    
+                <img class="card-img" src="img/pngegg.png" alt="">
+          
+                <div class="card-details card-block">
+                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Shawarma</h6>
+                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+                    consectetur
+                    adipisicing
+                    elit. Ut,
+                    dicta.</p>
+          
+                    <p value="300" class="price text-center pb-2 " style="font-weight: 700; ">300</p>
+          
+                     
+                    </a> 
+    
+    
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
+    
+                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
+    
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
+    
+                   
+    
+                </div>
+              </div>
+    
+              <div class=" col-lg-3 menu-card text-center" >
+    
+                <img class="card-img" src="img/pngegg.png" alt="">
+          
+                <div class="card-details card-block">
+                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Steak</h6>
+                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+                    consectetur
+                    adipisicing
+                    elit. Ut,
+                    dicta.</p>
+          
+                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">500</p>
+          
+                     
+    
+    
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
+                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
+    
+                   
+    
+                </div>
+              </div>
+    
+              <div class=" col-lg-3 menu-card text-center " >
+    
+                <img class="card-img" src="img/pngegg.png" alt="">
+          
+                <div class="card-details card-block">
+                  <h6 class="text-center pb-2 title" style="font-weight: 700;">Shawarma</h6>
+    
+                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
+                    consectetur
+                    adipisicing
+                    elit. Ut,
+                    dicta.</p>
+          
+                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">500</p>
+          
+                     
+    
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
+                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
+                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
+    
+                   
+    
+                </div>
+              </div>
+    
+      </div>
+    
+      <div class="floating">
+    
+        <p class="total-amount-display text-center">Total : $ 
+          
+          <span class="total-amount">0</span></p>
+    
+    
+        <div class="order-button text-center" style="margin: 20px">
+           
+          <a class="order-now-button">
+             
+            <button class="bn54">
+             
+              <span class="bn54span">Order Now</span>
+            </button>
+          </a>
+        </div>
+      
+      </div>
+    
+    
+      <style>
+    
+        .floating {
+            /* background-color: ; */
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+    
+    
+        #MainTable {
+        
+            width: 100%;
+            /* background-color: #D8F0DA; */
+            border: 1px;
+            min-width: 100%;
+            position: relative;
+            opacity: 0.97;
+            background: transparent;
+        }
+        
+        
+        
+        .order-button {
+            position: static ;
+            bottom: 0px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        
+        .bn54 {
+        
+            animation: bn54storm 0.7s ease-in-out both;
+          animation-delay: 0.06s; 
+         
+          position: relative;
+          outline: none;
+          text-decoration: none;
+          border-radius: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          /* text-transform: uppercase; */
+          height: 45px;
+          width: 130px;
+          opacity: 1;
+          background-color: #ed0a19;
+          /* border: 1px solid rgba(0, 0, 0, 0.6); */
+          border: none;
+        
+        
+        
+        }
+        
+       
+        
+        .bn54 .bn54span {
+          font-family: Poppins;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.7px;
+        }
+        
+       
+        
+        .bn54:hover {
+          animation: bn54rotate 0.7s ease-in-out both;
+        }
+        
+        
+        
+        .bn54:hover .bn54span {
+          animation: bn54storm 0.7s ease-in-out both;
+          animation-delay: 0.06s;
+        }
+        
+    
+        
+        @keyframes bn54rotate {
+          0% {
+            transform: rotate(0deg) translate3d(0, 0, 0);
+          }
+          25% {
+            transform: rotate(3deg) translate3d(0, 0, 0);
+          }
+          50% {
+            transform: rotate(-3deg) translate3d(0, 0, 0);
+          }
+          75% {
+            transform: rotate(1deg) translate3d(0, 0, 0);
+          }
+          100% {
+            transform: rotate(0deg) translate3d(0, 0, 0);
+          }
+        }
+        
+        @keyframes bn54storm {
+          0% {
+            transform: translate3d(0, 0, 0) translateZ(0);
+          }
+          25% {
+            transform: translate3d(4px, 0, 0) translateZ(0);
+          }
+          50% {
+            transform: translate3d(-3px, 0, 0) translateZ(0);
+          }
+          75% {
+            transform: translate3d(2px, 0, 0) translateZ(0);
+          }
+          100% {
+            transform: translate3d(0, 0, 0) translateZ(0);
+          }
+        }
+        
+        
+        
+          </style>
+    
+    
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script>
+        AOS.init({
+          offset: 400,
+          duration: 1400
+        });
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    
+
+
+
 
     <script>
-        $(document).ready(function(){
+        $( document ).ready(function() {
 
-            $(".order").click(function(){
-                var details = {'foods':'{"grape": "2", "pudding": "4"}', 'totalCost':'150'} 
+        var totalSum = 0.0;
+        var items = {};
+
+
+        update_amounts();
+        $('.onlyNumber, .price').on('keyup keypress blur change', function(e) {
+            update_amounts();
+        });
+
+        function update_amounts(){
+        
+            var sum = 0.0;
+                $('.menu-card').each(function() {
+                    var qty = $(this).find('.onlyNumber').val();
+
+                    
+                    if (qty > 0) {
+
+                        var title = $(this).find('.title').html();
+                        
+                        
+                        
+                        items[title] = qty;
+
+                    
+                    }
+
+                    var price = $(this).find('.price').html();
+                    
+                    var amount = (qty*price);
+                    
+                    sum+=amount;
+
+                    totalSum = sum;
+
+
+                    console.log();
+                    // $(this).find('.total-amount').text(''+amount);
+
+                });
+            $('.total-amount').text(sum);
+        
+
+        }
+
+        $(".add-button").click(function() {
+        updateValue(this, 1);
+        update_amounts();
+        });
+        $(".subtract-button").click(function() {
+        updateValue(this, -1);
+        update_amounts();
+        });
+
+        function updateValue(obj, delta) {
+        var item = $(obj).parent().find("input.onlyNumber");
+        var newValue = parseInt(item.val(), 10) + delta;
+        item.val(Math.max(newValue, 0));
+        }
+
+
+        $('.order-now-button').on('click', function(e) {
+            console.log(items);
+            console.log(totalSum);
+
+
+            // var details = JSON.stringify(detail)
+
+
+            var details = {'foods':{items}, 'totalCost':totalSum} 
                 $.ajax({
                 url: "http://localhost:8000/foodorders",
                 type: "POST",
@@ -48,13 +431,14 @@
                     if(result === "no_errors") location.href = "http://localhost:8000/successful"
                     // console.log(result);
                 }
-
+ 
+    
             })
 
-
-            })
         });
-        
+
+
+        });
 
     </script>
     
