@@ -11,9 +11,6 @@ const db = require('./db');
 
 
 
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var userProfile;
 
 var app = express();
@@ -37,8 +34,6 @@ app.use(session({
 }));
 
 
-app.use('/admin', indexRouter);
-app.use('/users', usersRouter);
 
 app.get('/', function(req, res) {
   console.log(userProfile);
@@ -141,6 +136,16 @@ app.get('/auth/google/callback',
 
   app.get('/orders', function(req, res){
     res.render('orders')
+  })
+
+  app.get('/admin', function(req, res){
+    var sql = "select * from tableBooking";
+    
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("data sent", result);
+      res.render('admin',{result});
+    });
   })
 
   app.post('/foodorders', function(req, res){
