@@ -414,11 +414,12 @@
             console.log(items);
             console.log(totalSum);
 
+            var itemsAsJson = JSON.stringify(items)
 
-            // var details = JSON.stringify(detail)
+            console.log(itemsAsJson);
 
 
-            var details = {'foods':{items}, 'totalCost':totalSum} 
+            var details = {'foods':itemsAsJson, 'totalCost':totalSum} 
                 $.ajax({
                 url: "http://localhost:8000/foodorders",
                 type: "POST",
@@ -431,7 +432,7 @@
                     if(result === "no_errors") location.href = "http://localhost:8000/successful"
                     // console.log(result);
                 }
- 
+                
     
             })
 

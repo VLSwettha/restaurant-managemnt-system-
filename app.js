@@ -146,17 +146,15 @@ app.get('/auth/google/callback',
   app.post('/foodorders', function(req, res){
 
     var username = req.session.userName;
-    var data = req.body;
-    console.log("!!!!!!!!!!!!!!!",data);
+    var data = req.body
 
-  //   var sql = "INSERT INTO foodOrders (username,  food, totalCost) VALUES ('"+username+"', '"+foodJSON+"', '"+totalCost+"')";
+    var sql = "INSERT INTO foodOrders (username,  food, totalCost) VALUES ('"+username+"', '"+data.foods+"', '"+data.totalCost+"')";
     
-  //   db.con.query(sql, function (err, result) {
-  //     if (err) throw err;
-  //     console.log("food orders inserted");
-  //     res.json("no_errors");
-  // });
-    res.json("no_errors");
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("food orders inserted");
+      res.json("no_errors");
+    });
   })
 
   app.get('/successful', function(req, res){
