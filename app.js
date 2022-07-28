@@ -6,10 +6,8 @@ var logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const db = require('./db');
-
-
-
-
+const fs = require('fs');
+var fileUpload = require('express-fileupload');
 
 var userProfile;
 
@@ -32,6 +30,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
+app.use(fileUpload());
 
 
 
@@ -135,7 +134,16 @@ app.get('/auth/google/callback',
   })
 
   app.get('/orders', function(req, res){
-    res.render('orders')
+    var sql = "select * from menu";
+    
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("data sent", result[0].productName);
+      res.render('orders',{result});
+      
+    });
+    
+   
   })
 
   app.get('/admin', function(req, res){
@@ -164,6 +172,42 @@ app.get('/auth/google/callback',
 
   app.get('/successful', function(req, res){
     res.render('successful');
+  })
+  app.get('/addMenu', function(req, res){
+    res.render('addmenu');
+  })
+
+  app.post('/updateMenu', async function(req, res){
+
+    var product = req.body.productName;
+    var description = req.body.Description;
+    var quantity = req.body.Quantity;
+    var price = req.body.Price;
+
+
+    var image = req.files.foodImage
+
+
+    await image.mv('./public/menuImage/'+product + '.png',  (err,done)=>{
+      if(!err){
+        
+          var sql = "INSERT INTO menu (productName, description, price, quantity, image) VALUES ('"+product+"', '"+description+"', '"+price+"' , '"+quantity+"' , '"+product+"')";
+          
+          db.con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("food orders inserted");
+            res.redirect('/admin');
+          });
+
+      }else{
+        console.log(err)
+      }
+    })
+
+
+    
+
+    
   })
 
 

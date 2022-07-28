@@ -26,13 +26,19 @@ body {
 } */
 
 
+
+.row{
+  --bs-gutter-x: 0;
+}
+
+
 .menu-card{
   
-    margin: 30px;
+    margin: 30px; 
     margin-top: 100px;
     padding: 30px;
     /* height: 220px;*/
-    width: 220px; 
+    width: 260px; 
     border-radius: 30px;
     /* background-color: #ffffff; */
     /* box-shadow: inset 8px 8px 8px #cbced1,
@@ -48,7 +54,7 @@ body {
     /* position: relative; */
     
     top: -120px;
-    right: 23px;
+    right: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,15 +67,15 @@ body {
     
     /* width: 100px; */
     height: 40px;
-
+    text-align: center;
     border-radius: 30px 10px 30px 10px;
     color: white;
     background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(39, 39, 39) 100%);
 
     /* outline: rgba(237,10,25,1);x */
 
-    position: absolute;
-    bottom: auto;
+    /* position: absolute;
+    bottom: auto; */
    
 
     
@@ -77,7 +83,33 @@ body {
 
 }
 
+
+.buy-button:hover{
+    
+  /* width: 100px; */
+  height: 40px;
+  text-align: center;
+  border-radius: 30px 10px 30px 10px;
+  color: white;
+  background: #920d0d;
+
+  /* outline: rgba(237,10,25,1);x */
+
+  /* position: absolute;
+  bottom: auto; */
+ 
+
+  
+
+
+}
+
 .buy-now{
   
 
+}
+
+p {
+  
+    margin-bottom: 0rem;
 }

@@ -1,40 +1,395 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eat O’Café</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="table.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="table.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
+</head>
+
+<body style="overflow-x: hidden;">
+
+
+
+
+    <nav class="navbar">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" data-toggle="open-navbar1">
+          ff
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+                <a href="#">
+                    <img src="img/logo.png" alt="" class="img-fluid" width="170em">
+                </a>
+            </div>
+
+            <div class="navbar-menu" id="open-navbar1">
+                <ul class="navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="cart-button"><a href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+                    <li class="sign-in-button "><a href="#" class="text-white">Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+   <div class="container">
+    <div class="neumor">
+
+        <section class="">
+
+            <div class="neumorphic variation2 m-4" style="display: flex; align-items: center; justify-content: center; border-radius: 50px;">
+
+
+                <div class="date-time-row">
+
+                    <form class="row " style="display: flex; align-items: center; justify-content: center;">
+                        <label class="col" for="date">Date : </label>
+                        <input class="col date-pickers me-3" type="date" id="date" name="date">
+
+                        <label class="col" for="sTime">Start Time : </label>
+                        <input class=" col time-pickers me-3" type="time" id="sTime" name="sTime">
+
+                        <label class="col" for="eTime">End Time : </label>
+                        <input class="col time-pickers me-3" type="time" id="eTime" name="eTime">
+
+
+
+                        <input type="button" class=" col bn54 px-4 text-white" value="Check Availability ">
+
+
+
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+    </div>
+   </div>
+
+
+
+
+
+
+
+<div class="container">
+
+    <div style="  height: auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+        <div><img class="col img-fluid seats " src="img/s01.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s02.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s03.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s04.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s05.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s06.png" alt=""></div>
+        
+        <div><img class="col img-fluid seats " src="img/s07.png" alt=""></div>
+
+
+        <div><img class="col img-fluid seats " src="img/s08.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s09.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s10.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s11.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s12.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s13.png" alt=""></div>
+
+        <div><img class="col img-fluid seats " src="img/s14.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s15.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s16.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s17.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s18.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s19.png" alt=""></div>   
+        <div><img class="col img-fluid seats " src="img/s20.png" alt=""></div>
+        <div><img class="col img-fluid seats " src="img/s21.png" alt=""></div>
+    </div>
+</div>
+
+
+
+    
+
     <style>
-        .table{
-            width: 100px;
-            height: 50px;
-            background: #e3c0c0;
-            text-align: center;
-            padding-top: 23px; cursor: pointer; margin: 12px;
+        .order-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .selected{
-            background-color: rgb(0, 170, 0);
+        
+        .bn54 {
+            position: relative;
+            outline: none;
+            text-decoration: none;
+            border-radius: 50px;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            /* text-transform: uppercase; */
+            height: 45px;
+            /* width: 130px; */
+            opacity: 1;
+            background-color: #ed0a19;
+            /* border: 1px solid rgba(0, 0, 0, 0.6); */
+            border: none;
+        }
+        
+        .bn55 {
+            position: relative;
+            outline: none;
+            text-decoration: none;
+            border-radius: 50px;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            /* text-transform: uppercase; */
+            height: 45px;
+            /* width: 130px; */
+            opacity: 1;
+            /* background-color: #ed0a19; */
+            border: 2px solid #000000;
+            /* border: none; */
+            background: transparent;
+        }
+        
+        .bn54 .bn54span {
+            font-family: Poppins;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+        }
+        
+        .bn55 .bn55span {
+            font-family: Poppins;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+        }
+        
+        .bn54:hover {
+            animation: bn54rotate 0.7s ease-in-out both;
+        }
+        
+        .bn55:hover {
+            animation: bn54rotate 0.7s ease-in-out both;
+        }
+        
+        .bn54:hover .bn54span {
+            animation: bn54storm 0.7s ease-in-out both;
+            animation-delay: 0.06s;
+        }
+        
+        .bn55:hover .bn55span {
+            animation: bn54storm 0.7s ease-in-out both;
+            animation-delay: 0.06s;
+        }
+        
+        @keyframes bn54rotate {
+            0% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+            }
+            25% {
+                transform: rotate(3deg) translate3d(0, 0, 0);
+            }
+            50% {
+                transform: rotate(-3deg) translate3d(0, 0, 0);
+            }
+            75% {
+                transform: rotate(1deg) translate3d(0, 0, 0);
+            }
+            100% {
+                transform: rotate(0deg) translate3d(0, 0, 0);
+            }
+        }
+        
+        @keyframes bn54storm {
+            0% {
+                transform: translate3d(0, 0, 0) translateZ(0);
+            }
+            25% {
+                transform: translate3d(4px, 0, 0) translateZ(0);
+            }
+            50% {
+                transform: translate3d(-3px, 0, 0) translateZ(0);
+            }
+            75% {
+                transform: translate3d(2px, 0, 0) translateZ(0);
+            }
+            100% {
+                transform: translate3d(0, 0, 0) translateZ(0);
+            }
+        }
+        
+        .neumor {
+            padding: 0rem 0rem 0;
+            /* background-color: #e0e0e0; */
+            color: #999;
+            display: flex;
+            flex-wrap: wrap;
+            /* max-width: 680px; */
+            font-family: Poppins;
+            margin: 0 auto;
+        }
+        
+        section {
+            flex: 1 1 50%;
+            padding-bottom: 1rem;
+        }
+        
+        h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        .neumorphic {
+            box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2), -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+            /* width: 200px;
+    height: 200px; */
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 1.3rem;
+            /* display: flex; */
+        }
+        
+        .neumorphic--pressed {
+            box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        .variation1 {
+            background: linear-gradient( -45deg, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.3));
+        }
+        
+        .variation1 span {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            overflow: hidden;
+            padding: 0.65rem;
+            box-shadow: inset 8px 8px 16px 0 rgba(0, 0, 0, 0.2), inset -8px -8px 16px 0 rgba(255, 255, 255, 0.4);
+        }
+        
+        .variation1 strong {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            overflow: hidden;
+            background-color: #f13c20;
+            color: white;
+        }
+        
+        .variation1.pressed strong {
+            background-color: #bb3c20;
+        }
+        
+        .variation2 {
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .variation2 span {
+            display: block;
+            padding-bottom: 1.5rem;
+            position: relative;
+            font-size: 3rem;
+        }
+        
+        .variation2 span::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: block;
+            height: 0.3rem;
+            border-radius: 1rem;
+            width: 50%;
+            margin: 0 auto;
+            background-color: currentColor;
+        }
+        
+        .variation2.pressed {
+            color: #273338;
+            font-weight: 700;
         }
     </style>
+
+
     
-</head>
-<body>
-    
-    <section id="table-booking">
-        <div class="table" name="1">table 1</div>
-        <div class="table"name="2">table 2</div>
-        <div class="table" name="3">table 3</div>
-        <div class="table"name="4">table 4</div>
-        <label for="appt">From </label>
-        <input type="time" name="timeFrom" class="timeF">
-        <label for="appt">To </label>
-        <input type="time" name="timeTo" class="timeT">
-        
-        <br>
-        <button style="margin: 12px;"class="book_table">BOOK TABLE</button>
-    </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 400,
+            duration: 1400
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script>
         $(document).ready(function(){
@@ -100,7 +455,3 @@
 
         
     </script>
-
-
-</body>
-</html>

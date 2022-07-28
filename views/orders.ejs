@@ -50,102 +50,19 @@
     
       <div class="row d-flex justify-content-center">
     
-    
-              <div class=" col-lg-3 menu-card text-center " >
-    
-                <img class="card-img" src="img/pngegg.png" alt="">
-          
-                <div class="card-details card-block">
-                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Burger</h6>
-                  <p class="text-center py-1 " style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                    consectetur
-                    adipisicing
-                    elit. Ut,
-                    dicta.</p>
-          
-                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">500   </p>
-          
-                    
-    
-    
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
-                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
-    
-                   
-    
-                </div>
-              </div>
-    
-              <div class=" col-lg-3 menu-card text-center " >
-    
-                <img class="card-img" src="img/pngegg.png" alt="">
-          
-                <div class="card-details card-block">
-                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Noodles</h6>
-                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                    consectetur
-                    adipisicing
-                    elit. Ut,
-                    dicta.</p>
-          
-                    <p value="300" class="price text-center pb-2 " style="font-weight: 700; ">500 </p>
-          
-                    
-    
-    
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
-                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
-    
-                   
-    
-                </div>
-              </div>
-    
-    
-              <div class=" col-lg-3 menu-card text-center " >
-    
-                <img class="card-img" src="img/pngegg.png" alt="">
-          
-                <div class="card-details card-block">
-                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Shawarma</h6>
-                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                    consectetur
-                    adipisicing
-                    elit. Ut,
-                    dicta.</p>
-          
-                    <p value="300" class="price text-center pb-2 " style="font-weight: 700; ">300</p>
-          
-                     
-                    </a> 
-    
-    
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
-    
-                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
-    
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
-    
-                   
-    
-                </div>
-              </div>
+              <% for(var i=0; i<result.length; i++){%>
+               
+                
     
               <div class=" col-lg-3 menu-card text-center" >
     
-                <img class="card-img" src="img/pngegg.png" alt="">
+                <img class="card-img" src=menuImage/<%= result[i].productName %>.png alt="">
           
                 <div class="card-details card-block">
-                  <h6 class="text-center pb-2  title" style="font-weight: 700;">Steak</h6>
-                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                    consectetur
-                    adipisicing
-                    elit. Ut,
-                    dicta.</p>
+                  <h6 class="text-center pb-2  title" style="font-weight: 700;"><%= result[i].productName %></h6>
+                  <p class="text-center py-1" style=" font-size: 11px;"><%= result[i].description %></p>
           
-                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">500</p>
+                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">Rs <%= result[i].price %></p>
           
                      
     
@@ -159,33 +76,8 @@
                 </div>
               </div>
     
-              <div class=" col-lg-3 menu-card text-center " >
+              <% } %>
     
-                <img class="card-img" src="img/pngegg.png" alt="">
-          
-                <div class="card-details card-block">
-                  <h6 class="text-center pb-2 title" style="font-weight: 700;">Shawarma</h6>
-    
-                  <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                    consectetur
-                    adipisicing
-                    elit. Ut,
-                    dicta.</p>
-          
-                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">500</p>
-          
-                     
-    
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center subtract-button" type="button" value="-" id="subs" class="btn btn-default pull-left" style="margin-right: 2%"/>&nbsp;
-                 <input type="text" style="float: left; width: 45px;text-align: center; margin: 0px;" class="onlyNumber form-control pull-left" id="noOfRoom" value="0" name="noOfRoom" />&nbsp;
-                 <input class="buy-button mx-2 d-flex justify-content-center align-items-center text-center add-button"  type="button" value="+" id="adds" class="btn btn-default" />
-    
-                   
-    
-                </div>
-              </div>
-    
-      </div>
     
       <div class="floating">
     
