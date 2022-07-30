@@ -8,6 +8,7 @@ const passport = require('passport');
 const db = require('./db');
 const fs = require('fs');
 var fileUpload = require('express-fileupload');
+var mysql = require('mysql');
 
 var userProfile;
 
@@ -110,6 +111,7 @@ app.get('/auth/google/callback',
     for (let i = 2; i < allDataAsArray.length; i++) {
         tables.push(allDataAsArray[i])
     }
+    //book
  
     data={"tables":tables, "TimeFrom": timeFrom, "timeTo": timeTo, "userName": req.session.userName}
     let username = req.session.userName;
@@ -117,11 +119,15 @@ app.get('/auth/google/callback',
     var sql = "INSERT INTO tableBooking (timeFrom, timeTo, tables, userName) VALUES ('"+timeFrom+"', '"+timeTo+"', '"+tablesJson+"', '"+username+"')";
     db.con.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("1 record inserted", result);
+     
+      req.session.tableID = result.insertId;
+      res.json("no_errors")
   });
 
-    res.json("no_errors")
+   
 
+
+  
   })
 
   app.get('/logout', function(req, res){
@@ -138,8 +144,9 @@ app.get('/auth/google/callback',
     
     db.con.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("data sent", result[0].productName);
-      res.render('orders',{result});
+      
+      var tableID = req.session.tableID;
+      res.render('orders',{result, tableID});
       
     });
     
@@ -156,12 +163,84 @@ app.get('/auth/google/callback',
     });
   })
 
+  app.get('/adminlogin', function(req, res){
+    res.render('adminLogin',{err: ""});
+  })
+
+  app.get('/chef', function(req, res){
+    var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE finished = 0";
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("food orders inserted");
+      
+      
+      res.render('chef', {result});
+    });
+    
+  })
+
+  app.post('/orderFinished', function(req, res){
+    var foodID = req.body.foodID;
+
+    var sql = "UPDATE foodOrders SET finished = true WHERE foodID = '"+foodID+"'";
+
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      res.redirect('/chef');
+    });
+    
+  })
+
+
+
+  app.get('/cashier', function(req, res){
+    var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE foodOrders.finished = 1";
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+  
+      res.render('cashier', {result});
+    });
+   
+  })
+
+
+
+  app.post('/validateAdminLogin', function(req, res){
+    var username = req.body.uname;
+    var password = req.body.psw;
+
+    if (username == "admin" && password =="admin" ) {
+      res.redirect('/admin');                  
+    }
+
+
+    else if(username == "chef" && password =="chef" ){
+      res.redirect('/chef');   
+    }
+
+
+
+    else if(username == "cashier" && password =="cashier" ){
+      res.redirect('/cashier');   
+    }
+
+
+
+    else{
+      res.render('adminlogin', {err:"incorrect username or password"})
+    }
+
+    //console.log(username + " " + password);
+
+  })
+
   app.post('/foodorders', function(req, res){
 
     var username = req.session.userName;
     var data = req.body
+    var tableId = req.body.tableID
 
-    var sql = "INSERT INTO foodOrders (username,  food, totalCost) VALUES ('"+username+"', '"+data.foods+"', '"+data.totalCost+"')";
+    var sql = "INSERT INTO foodOrders (username,  food, totalCost, tableID) VALUES ('"+username+"', '"+data.foods+"', '"+data.totalCost+"', '"+tableId+"')";
     
     db.con.query(sql, function (err, result) {
       if (err) throw err;
@@ -170,9 +249,18 @@ app.get('/auth/google/callback',
     });
   })
 
-  app.get('/successful', function(req, res){
-    res.render('successful');
+  app.get('/mybookings', function(req, res){
+    let username  = req.session.userName
+    var sql = 'select * from foodOrders where username = ' +mysql.escape(username);
+    
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("data of username ::::::: ", result);
+      res.render('mybookings', {result});
+    });
+    
   })
+
   app.get('/addMenu', function(req, res){
     res.render('addmenu');
   })
@@ -230,3 +318,5 @@ app.use(function(err, req, res, next) {
 app.listen(8000, ()=>{console.log("server running")});
 
 module.exports = app;
+
+

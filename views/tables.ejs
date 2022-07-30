@@ -9,20 +9,16 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="menu.css">
-    <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/menu.css">
+    <link rel="stylesheet" href="stylesheets/table.css">
 
     <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="table.js"></script>
-
-    <script>
-        AOS.init();
-    </script>
+ 
 
 </head>
 
@@ -48,12 +44,9 @@
 
             <div class="navbar-menu" id="open-navbar1">
                 <ul class="navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li class="cart-button"><a href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-                    <li class="sign-in-button "><a href="#" class="text-white">Sign In</a></li>
+                   
+                    
+                    <li class="sign-in-button "><a href="/" class="text-white">Cancel Booking</a></li>
                 </ul>
             </div>
         </div>
@@ -72,18 +65,18 @@
                 <div class="date-time-row">
 
                     <form class="row " style="display: flex; align-items: center; justify-content: center;">
-                        <label class="col" for="date">Date : </label>
-                        <input class="col date-pickers me-3" type="date" id="date" name="date">
+                        <!-- <label class="col" for="date">Date : </label>
+                        <input class="col date-pickers me-3" type="date" id="date" name="date"> -->
 
                         <label class="col" for="sTime">Start Time : </label>
-                        <input class=" col time-pickers me-3" type="time" id="sTime" name="sTime">
+                        <input class="timeF col time-pickers me-3" type="time" id="sTime" name="sTime">
 
                         <label class="col" for="eTime">End Time : </label>
-                        <input class="col time-pickers me-3" type="time" id="eTime" name="eTime">
+                        <input class="timeT col time-pickers me-3" type="time" id="eTime" name="eTime">
 
 
 
-                        <input type="button" class=" col bn54 px-4 text-white" value="Check Availability ">
+                        <input type="button" class="book_table col bn54 px-4 text-white" value="Book table">
 
 
 
@@ -361,13 +354,6 @@
 
 
     
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 400,
-            duration: 1400
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 
@@ -393,31 +379,28 @@
 
     <script>
         $(document).ready(function(){
-            $(".table").click(function(){
-                $(this).toggleClass("selected");
-            });
+
+
             var table = []
-            $('.table').on('click', function(){
-                var value = $(this).attr('name');
 
-                
-                function remove(table, value) {
-                    var i = table.indexOf(value)
-                    if(i > -1){                            
-                        table.splice(i, 1);
-                    }                           
-                }
+            $('img.seats').on('click', function() {
+        
+                    var x  = $(this).prop("src");
+                    let status = x.slice(-7,-6);
+                    let seatNo = x.slice(-6,-4);
+                    console.log(x);
+                    console.log(status);
+                    console.log(seatNo);
+                    
+                    if (status == "s") {
+                        $(this).prop("src", "img/c" + seatNo + ".png");
+                        table.push(seatNo);  
+                    } else if ( status == "c") {
+                        $(this).prop("src", "img/s" + seatNo + ".png");
+                        remove(table, seatNo);  
+                    }
+             });
 
-                if(!table.includes(value)){
-                    table.push(value);
-                }
-                else{
-                    remove(table, value);                    
-                }
-                
-                
-                
-            });
             
             $(".book_table").click(function(){
                 
@@ -433,6 +416,8 @@
                     details["table "+i] = table[i];
                 }
 
+                console.log(details);
+   
 
                 $.ajax({
                     url: "http://localhost:8000/book-table",
@@ -444,7 +429,7 @@
 
                     success: function(result) {
                         if(result === "no_errors") location.href = "http://localhost:8000/orders"
-                        // console.log(result);
+                     
                     }
 
                 })

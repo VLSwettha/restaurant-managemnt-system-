@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/cashier.css">
+    
+
+</head>
+
+<body>
+
+    
+    <CENTER><h2>CASHIER DASHBOARD</h2></CENTER>
+
+    
+
+
+    <div class="container">
+        <div class="row " style="display: flex; align-items: center; justify-content: center; flex-wrap : wrap;">
+            <% for(var i=0; i<result.length; i++) {%>
+                <form class="col form" action="" method="POST">
+                    <div class="form__field">
+
+                        <h3>Ordered by:   <%= result[i].userName %></h3>
+                        <p>Table:   <%= result[i].tableID %></p>
+                        <p>Total amount: Rs <%= result[i].totalCost %></p>
+
+
+                    </div>
+                    <button class="button" type="submit">paid</button>
+
+                </form>
+            <% } %>
+
+          
+        </div>
+    </div>
+
+</body>
+
+</html>

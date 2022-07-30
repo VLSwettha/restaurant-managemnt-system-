@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="stylesheets/login.js">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container" style="display: flex; justify-content: center; align-items: center;">
+
+        
+        <form class="col form" >
+            <div class="form__field" >
+    
+                <center><h3 >Login Page</h3></center>
+                <% if (err) {%>
+                    <p style="color: red;"><%= err %></p>
+                <%} %>
+                
+                    
+    
+            </div>
+            <!-- <button class="button" type="button" onclick="document.getElementById('id01').style.display='block'">Login as Admin</button>
+            <button class="button" type="button" onclick="document.getElementById('id01').style.display='block'">Login as Chef</button>
+            <button class="button" type="button" onclick="document.getElementById('id01').style.display='block'">Login as Cashier</button> -->
+            <button class="button" type="button" onclick="document.getElementById('id01').style.display='block'">Login as Admin</button>
+            <button class="button" type="button" onclick="document.getElementById('id01').style.display='block'">Login as Chef</button>
+            <button class="button" type="button" onclick="document.getElementById('id01').style.display='block'">Login as Cashier</button>
+        
+        
+        
+        </form>
+    </div>
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate form-modal"  action="/validateAdminLogin" onsubmit=" authenticate()" method="POST">
+        
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input style="border: none; border-radius: 30px;" type="text" placeholder="Enter Username" id="username" name="uname" >
+                
+                <label for="psw"><b>Password</b></label>
+                <input style="border: none; border-radius: 30px;" type="password" placeholder="Enter Password" id= "password" name="psw" >
+                
+                <p id="error-msg" style="color:rgb(230, 9, 9); font-size: small;">
+                    
+                </p>
+
+                <button style="margin-top: 30px;" class="button" type="submit" onclick="validate()">Login</button>
+         
+
+            </div>
+            
+
+        </form>
+    </div>
+
+    
+
+    <script>
+
+        
+
+
+
+
+    </script>
+
+</body>
+
+</html>

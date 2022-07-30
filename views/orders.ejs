@@ -37,7 +37,8 @@
     
           <div class="navbar-menu" id="open-navbar1">
             <ul class="navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+            
+            <p id="tableIdHidden" style="visibility: hidden;"><%= tableID %></p>
     
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
@@ -62,7 +63,7 @@
                   <h6 class="text-center pb-2  title" style="font-weight: 700;"><%= result[i].productName %></h6>
                   <p class="text-center py-1" style=" font-size: 11px;"><%= result[i].description %></p>
           
-                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; ">Rs <%= result[i].price %></p>
+                    <p value="300"  class="price text-center pb-2 " style="font-weight: 700; "><%= result[i].price %></p>
           
                      
     
@@ -79,7 +80,7 @@
               <% } %>
     
     
-      <div class="floating">
+      <div class="floatings ">
     
         <p class="total-amount-display text-center">Total : $ 
           
@@ -101,12 +102,15 @@
     
     
       <style>
-    
-        .floating {
+        
+
+
+        .floatings {
+
             /* background-color: ; */
             position: fixed;
             bottom: 10px;
-            right: 10px;
+            left: 42vw;
         }
     
     
@@ -306,12 +310,14 @@
             console.log(items);
             console.log(totalSum);
 
+            var tableID = $("#tableIdHidden").html();
+
             var itemsAsJson = JSON.stringify(items)
 
             console.log(itemsAsJson);
 
 
-            var details = {'foods':itemsAsJson, 'totalCost':totalSum} 
+            var details = {'foods':itemsAsJson, 'totalCost':totalSum, 'tableID': tableID} 
                 $.ajax({
                 url: "http://localhost:8000/foodorders",
                 type: "POST",
@@ -321,7 +327,7 @@
                 dataType: 'json',
 
                 success: function(result) {
-                    if(result === "no_errors") location.href = "http://localhost:8000/successful"
+                    if(result === "no_errors") location.href = "http://localhost:8000/mybookings"
                     // console.log(result);
                 }
                 
