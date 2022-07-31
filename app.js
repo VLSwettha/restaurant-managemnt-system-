@@ -85,7 +85,8 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect success.
     res.redirect('/');
   });
-  
+    
+
 
   app.get('/tables', function(req, res){
     console.log(req.session.loggedIn);
@@ -183,7 +184,7 @@ app.get('/auth/google/callback',
      
       db.con.query(sql1, function (err, result2) {
         if (err) throw err;
-        console.log(result2);
+       
         
         res.render('admin',{result, result2});
       });
@@ -201,7 +202,7 @@ app.get('/auth/google/callback',
     var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE finished = 0";
     db.con.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("food orders inserted");
+   
       
       
       res.render('chef', {result});
@@ -269,14 +270,42 @@ app.get('/auth/google/callback',
     var username = req.session.userName;
     var data = req.body
     var tableId = req.body.tableID
+    var foods = req.body.foods
 
-    var sql = "INSERT INTO foodOrders (username,  food, totalCost, tableID) VALUES ('"+username+"', '"+data.foods+"', '"+data.totalCost+"', '"+tableId+"')";
-    
-    db.con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("food orders inserted");
-      res.json("no_errors");
+    foods = JSON.parse(foods);
+
+
+    Object.keys(foods).forEach(key => {
+      console.log(key);        // the name of the current key.
+
+      console.log(foods[key]); // the value of the current key.
+      var value = foods[key]
+
+ 
+      db.con.query('UPDATE menu SET quantity = quantity - ? WHERE menu.productName = ? ', [value, key], function(err, result){
+        if (err) throw err;
+      
+       
+      })
+      
     });
+
+
+    if(tableId){
+      var sql = "INSERT INTO foodOrders (username,  food, totalCost, tableID) VALUES ('"+username+"', '"+data.foods+"', '"+data.totalCost+"', '"+tableId+"')";
+    
+      db.con.query(sql, function (err, result) {
+        if (err) throw err;
+      
+        res.json("no_errors");
+    });
+      
+    }
+    else{
+      res.json("err")
+    }
+
+    
   })
 
   app.get('/mybookings', function(req, res){
@@ -286,7 +315,8 @@ app.get('/auth/google/callback',
     
     db.con.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("data of username ::::::: ", result);
+    
+      
       result=result.reverse();
       res.render('mybookings', {result});
     });
@@ -339,7 +369,7 @@ app.get('/auth/google/callback',
           
           db.con.query(sql, function (err, result) {
             if (err) throw err;
-            console.log("food orders inserted");
+            
             res.redirect('/admin');
           });
 

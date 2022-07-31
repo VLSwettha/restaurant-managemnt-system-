@@ -324,7 +324,13 @@
                 dataType: 'json',
 
                 success: function(result) {
-                    if(result === "no_errors") location.href = "http://localhost:8000/mybookings"
+
+                    if(result === "no_errors"){
+                      location.href = "http://localhost:8000/mybookings"
+                    } 
+                    else{
+                      location.href = "http://localhost:8000/tables"
+                    }
                     // console.log(result);
                 }
                 
