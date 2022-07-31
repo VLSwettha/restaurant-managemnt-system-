@@ -1,0 +1,19 @@
+.form {
+    
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width:30px;
+    height: 50vh; */
+    padding: 32px;
+    background-color: #EBECF099;
+    border-radius: 13px;
+    box-shadow: 3px 3px 5px #BABECC, -5px -5px 10px #FFF;
+}
+
+.form__field {
+    display: grid;
+    /* gap: 24px; */
+    margin-bottom: 32px;
+}

@@ -76,7 +76,7 @@
 
 
 
-                        <input type="button" class="book_table col bn54 px-4 text-white" value="Book table">
+                        <input type="button" class="book_table col bn54 px-4 text-white" value="Check availability">
 
 
 
@@ -411,6 +411,14 @@
 
                 details["timeFrom"] = timeF
                 details["timeTo"] = timeT
+
+                function removeDuplicates(arr) {
+                    return arr.filter((item,
+                        index) => arr.indexOf(item) === index);
+                }
+ 
+                table = removeDuplicates(table)
+
 
                 for (let i = 0; i < table.length; i++) {
                     details["table "+i] = table[i];

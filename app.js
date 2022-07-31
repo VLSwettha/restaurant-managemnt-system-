@@ -153,15 +153,33 @@ app.get('/auth/google/callback',
    
   })
 
+  app.get('/about', function(req, res){
+    res.render('about');
+  })
+  app.get('/menu', function(req, res){
+    res.render('menu');
+  })
+
   app.get('/admin', function(req, res){
     var sql = "select * from tableBooking";
+    var sql1 = "select * from menu";
+
     
     db.con.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("data sent", result);
-      res.render('admin',{result});
+      
+     
+      db.con.query(sql1, function (err, result2) {
+        if (err) throw err;
+        console.log(result2);
+        
+        res.render('admin',{result, result2});
+      });
     });
   })
+
+
+
 
   app.get('/adminlogin', function(req, res){
     res.render('adminLogin',{err: ""});
@@ -251,11 +269,13 @@ app.get('/auth/google/callback',
 
   app.get('/mybookings', function(req, res){
     let username  = req.session.userName
-    var sql = 'select * from foodOrders where username = ' +mysql.escape(username);
+    var sql = "select * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID where foodOrders.username = " +mysql.escape(username);
+    
     
     db.con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("data of username ::::::: ", result);
+      result=result.reverse();
       res.render('mybookings', {result});
     });
     
@@ -263,6 +283,30 @@ app.get('/auth/google/callback',
 
   app.get('/addMenu', function(req, res){
     res.render('addmenu');
+  })
+
+  app.get('/deleteMenu', function(req, res){
+    
+    var sql = "select * from menu";
+    
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      
+      
+      res.render('deleteMenu',{result});
+      
+    });
+  })
+
+  app.post('/deleteMenu', function(req, res){
+    var menuID = req.body.deleteMenuID;
+    var sql = "DELETE FROM menu WHERE menu.menuID=" +mysql.escape(menuID);
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      
+      res.redirect('deleteMenu');
+      
+    });
   })
 
   app.post('/updateMenu', async function(req, res){

@@ -66,11 +66,12 @@
         <ul class="navbar-nav">
           <li class="active"><a href="#">Home</a></li>
 
-          <li><a href="#">About</a></li>
+          
           <li><a href="/adminlogin">Admin</a></li>
-          <li class="cart-button"><a href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
+          
              
           <% if (user) { %>
+            <li class="cart-button"><a href="/myBookings"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
             <li class= ""><a class="text-black"><%= user.displayName %></a></li>
             <li class="sign-in-button"><a href="/logout" class="text-white">Sign out</a></li>
             <%} else { %>
@@ -134,8 +135,8 @@
 
         <br>
         <div class=" hero-buttons my-sm-4 d-flex align-items-center justify-content-center row-cols-sm-2 ">
-          <span class=" col primary-btn text-white text-center my-lg-0 mx-sm-3">View
-            Menu</span>
+          <a href="/menu"><span class=" col primary-btn text-white text-center my-lg-0 mx-sm-3">View
+            Menu</span></a>
           <a href="/tables" ><span class="col secondary-btn text-center">Book a
             Table</span></a>
         </div>

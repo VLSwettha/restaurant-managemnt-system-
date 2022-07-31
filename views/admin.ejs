@@ -33,7 +33,7 @@
 <body>
     <div class="sidebar">
         <div class="logo-details">
-            <i class='bx bxl-c-plus-plus'></i>
+            <i style="visibility: hidden;" class='bx bxl-c-plus-plus'></i>
             <span class="logo_name">Admin Panel</span>
         </div>
         <ul class="nav-links">
@@ -50,47 +50,16 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/deleteMenu">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Update Menu</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Cashier</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-coin-stack'></i>
-                    <span class="links_name">User Data</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-book-alt'></i>
-                    <span class="links_name">Total order</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-message'></i>
-                    <span class="links_name">Messages</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="links_name">Settings</span>
-                </a>
-            </li>
-            <li class="log_out">
-                <a href="#">
-                    <i class='bx bx-log-out'></i>
-                    <span class="links_name">Log out</span>
-                </a>
-            </li>
+            
+           
+         
+            
+            
         </ul>
     </div>
     <section class="home-section">
@@ -99,14 +68,11 @@
                 <i class='bx bx-menu sidebarBtn'></i>
                 <span class="dashboard">Dashboard</span>
             </div>
-            <div class="search-box">
-                <input type="text" placeholder="Search...">
-                <i class='bx bx-search'></i>
-            </div>
+            
             <div class="profile-details">
                 <!--<img src="images/profile.jpg" alt="">-->
-                <span class="admin_name">Shawarma</span>
-                <i class='bx bx-chevron-down'></i>
+                <span  class="admin_name"  ><a href="/adminLogin">Logout</a></span>
+                
             </div>
         </nav>
 
@@ -120,19 +86,19 @@
                     </div>
                     <i class='bx bx-cart-alt cart'></i>
                 </div>
-                <div class="box">
+                <!-- <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Month Expense</div>
+                        <div class="box-topic">Total earnings</div>
                         <div class="number">$0</div>
 
                     </div>
                     <i class='bx bxs-cart-download cart four'></i>
-                </div>
+                </div> -->
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Month Profit</div>
-                        <div class="number">0</div>
+                        <div class="box-topic">Total food items</div>
+                        <div class="number"><%= result2.length %></div>
 
                     </div>
                     <i class='bx bxs-cart-add cart two'></i>
@@ -158,7 +124,7 @@
                             <th>User</th>
                             <th>Time From</th>
                             <th>Time To</th>
-                            <th>Delete</th>
+                            
                         </tr>
                        
 
@@ -168,7 +134,7 @@
                                 <td><%= result[i].userName %></td>
                                 <td><%= result[i].timeFrom %></td>
                                 <td><%= result[i].timeTo %></td>
-                                <td><button>Delete</button></td>
+                                
                             </tr>
                         <% } %>
 
