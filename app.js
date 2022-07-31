@@ -179,8 +179,6 @@ app.get('/auth/google/callback',
   })
 
 
-
-
   app.get('/adminlogin', function(req, res){
     res.render('adminLogin',{err: ""});
   })
