@@ -156,9 +156,21 @@ app.get('/auth/google/callback',
   app.get('/about', function(req, res){
     res.render('about');
   })
+
+
   app.get('/menu', function(req, res){
-    res.render('menu');
+    var sql = "select * from menu";
+    
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      
+      res.render('menu',{result});
+      
+    });
   })
+
+
+
 
   app.get('/admin', function(req, res){
     var sql = "select * from tableBooking";
