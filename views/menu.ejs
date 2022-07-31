@@ -49,203 +49,34 @@
 
       <div class="navbar-menu" id="open-navbar1">
         <ul class="navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li class="cart-button"><a href=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
-          <li class="sign-in-button "><a href="#" class="text-white">Sign In</a></li>
+        
+          <li class="sign-in-button "><a href="/" class="text-white">Back</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-
-
-
-
-
-
-
-
   <div class="row d-flex justify-content-center">
 
+    <% for(var i=0; i<result.length; i++){%>
+         
+         
 
           <div class=" col-lg-3 menu-card text-center " >
 
-            <img class="card-img" src="img/pngegg.png" alt="">
-
+            <img class="card-img" src=menuImage/<%= result[i].productName %>.png alt="">
+      
             <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-              </div></a>
-
-
+              <h6 class="text-center pb-2" style="font-weight: 700;"><%= result[i].productName %></h6>
+              <p class="text-center py-1" style=" font-size: 11px;"><%= result[i].description %></p>
+      
+                <p  class="text-center pb-2" style="font-weight: 700; "><%= result[i].price %></p>
+      
+                
             </div>
           </div>
 
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>
-
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>
-
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>
-
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>  
-
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>
-
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>
-
-          <div class=" col-lg-3 menu-card text-center " >
-
-            <img class="card-img" src="img/pngegg.png" alt="">
-      
-            <div class="card-details card-block">
-              <h6 class="text-center pb-2" style="font-weight: 700;">Shawarma</h6>
-              <p class="text-center py-1" style=" font-size: 11px;">dsffs ipsum, dolor sit amet
-                consectetur
-                adipisicing
-                elit. Ut,
-                dicta.</p>
-      
-                <p  class="text-center pb-2" style="font-weight: 700; ">500/-</p>
-      
-                <a href=""><div class="buy-button d-flex justify-content-center align-items-center text-center">
-                  <p class="buy-now d-flex justify-content-center align-items-center text-center px-4 ">Add to Cart</p>
-               </div></a>
-      
-      
-            </div>
-          </div>
+      <% } %>
 
   </div>
     
