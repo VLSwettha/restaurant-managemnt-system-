@@ -99,6 +99,7 @@
 
 
 <div class="container">
+    <p style="color: red;" class="err"></p>
 
     <div style="  height: auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
         <div><img class="col img-fluid seats " src="img/s01.png" alt=""></div>
@@ -424,7 +425,7 @@
                     details["table "+i] = table[i];
                 }
 
-                console.log(details);
+                // console.log(details);
    
 
                 $.ajax({
@@ -436,7 +437,36 @@
                     dataType: 'json',
 
                     success: function(result) {
-                        if(result === "no_errors") location.href = "http://localhost:8000/orders"
+                        if(result === "no_errors"){
+                            location.href = "http://localhost:8000/orders"   
+                        } else{
+                            $(".err").html("Seleced table are not available in this selected time slot")
+                            var bookedTable = result[0]
+                            console.log("booked tables : ", bookedTable["tables"]);
+                            var tbArray = bookedTable["tables"];
+
+                            $( "img.seats" ).each(function( index ) {
+                                let x  = $(this).prop("src");
+                                let status = x.slice(-7,-6);
+                                var seatNoo = x.slice(-6,-4);
+
+                                var numb = bookedTable["tables"].match(/\d/g);
+                                var newStr = bookedTable["tables"].replace('[', '').replace(']', '');
+                                var newArr = newStr.split(",")
+                                
+                                var newSeatNoo = seatNoo.toString();
+
+                                for (let i = 0; i < newArr.length; i++) {
+                                    newArr[i] = newArr[i].replace('"', '').replace('"', '').replace(' ', '');
+                                    console.log(newSeatNoo, " ", newArr[i]);
+                                    if (newSeatNoo == newArr[i]) {
+                                           $(this).prop("src", "img/b" + seatNoo + ".png");
+                                    }
+                                }
+
+                            });
+
+                        }
                      
                     }
 
