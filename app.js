@@ -107,26 +107,39 @@ app.get('/auth/google/callback',
     let timeTo  = bookingData.timeTo
     let tables = []
 
-    const allDataAsArray = Object.values(bookingData);
-
-    for (let i = 2; i < allDataAsArray.length; i++) {
-        tables.push(allDataAsArray[i])
-    }
-    //book
- 
-    data={"tables":tables, "TimeFrom": timeFrom, "timeTo": timeTo, "userName": req.session.userName}
-    let username = req.session.userName;
-    let tablesJson = JSON.stringify(tables)
-    var sql = "INSERT INTO tableBooking (timeFrom, timeTo, tables, userName) VALUES ('"+timeFrom+"', '"+timeTo+"', '"+tablesJson+"', '"+username+"')";
-    db.con.query(sql, function (err, result) {
+    
+    db.con.query('SELECT tables FROM tableBooking WHERE ? <= timeTo AND ? >= timeFrom;', [timeFrom, timeTo], function(err, result){
       if (err) throw err;
-     
-      req.session.tableID = result.insertId;
-      res.json("no_errors")
-  });
+      console.log(result);
+      if (result.length>0) {
+        res.json(result)
+      }else{
+        
+          const allDataAsArray = Object.values(bookingData);
 
-   
+          for (let i = 2; i < allDataAsArray.length; i++) {
+              tables.push(allDataAsArray[i])
+          }
+          //book
+      
+          data={"tables":tables, "TimeFrom": timeFrom, "timeTo": timeTo, "userName": req.session.userName}
+          let username = req.session.userName;
+          let tablesJson = JSON.stringify(tables)
+          var sql = "INSERT INTO tableBooking (timeFrom, timeTo, tables, userName) VALUES ('"+timeFrom+"', '"+timeTo+"', '"+tablesJson+"', '"+username+"')";
+          db.con.query(sql, function (err, result) {
+            if (err) throw err;
+          
+            req.session.tableID = result.insertId;
+            res.json("no_errors")
+        });
 
+
+      }
+    })
+
+
+    
+  
 
   
   })
