@@ -198,6 +198,29 @@ app.get('/auth/google/callback',
     res.render('adminLogin',{err: ""});
   })
 
+
+  app.get('/waiter', function(req, res){
+    var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE finished = 1 and served=0";
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      
+      result = result.reverse();
+      
+      res.render('waiter',{result});
+    });
+  })
+
+  app.post('/served', function(req, res){
+    var foodID = req.body.foodID
+
+    var sql = "UPDATE foodOrders SET served = true WHERE foodID = '"+foodID+"'";
+    db.con.query(sql, function (err, result) {
+      if (err) throw err;
+      res.redirect('/waiter');
+    });
+  })
+
+
   app.get('/chef', function(req, res){
     var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE finished = 0";
     db.con.query(sql, function (err, result) {
@@ -225,7 +248,7 @@ app.get('/auth/google/callback',
 
 
   app.get('/cashier', function(req, res){
-    var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE foodOrders.finished = 1";
+    var sql = "SELECT * from tableBooking JOIN foodOrders ON tableBooking.tableID = foodOrders.tableID WHERE foodOrders.served = 1";
     db.con.query(sql, function (err, result) {
       if (err) throw err;
   
@@ -253,6 +276,12 @@ app.get('/auth/google/callback',
 
     else if(username == "cashier" && password =="cashier" ){
       res.redirect('/cashier');   
+    }
+
+
+
+    else if(username == "waiter" && password =="waiter" ){
+      res.redirect('/waiter');   
     }
 
 
