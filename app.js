@@ -108,7 +108,8 @@ app.get('/auth/google/callback',
     let tables = []
 
     
-    db.con.query('SELECT tables FROM tableBooking WHERE ? <= timeTo AND ? >= timeFrom;', [timeFrom, timeTo], function(err, result){
+
+    db.con.query('select * from tableBooking where ( ? between timeFrom and timeTo) or ( ? between timeFrom and timeTo) or (? <= timeFrom and ? >=timeTo)', [timeFrom, timeTo, timeFrom, timeTo], function(err, result){
       if (err) throw err;
       console.log(result);
       if (result.length>0) {
